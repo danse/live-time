@@ -179,5 +179,4 @@ $(document).ready(function() {
 
     $('#source').val('http://sourcefabric.superdesk.pro/resources/LiveDesk/Blog/18/Post/Published/.json?X-Filter=*&limit=1000');
     application.source = $('#source').val();
-    application.update('aamulehti.json');
 });
