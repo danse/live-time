@@ -1,4 +1,3 @@
-$(document).ready(function() {
     var application = {
         intervalId: false,
         size: {width: 0, height: 0},
@@ -9,13 +8,13 @@ $(document).ready(function() {
             this.size.width = $(window).width() - 20;
             this.size.height = $(window).height() - 80;
         },
-        update: function() {
+        update: function(source) {
             var self = this;
 
             var sourceAlt = this.source.split('?')[0].replace('Post/Published/', '');
 
             $.getJSON(sourceAlt, function(dataAlt) {
-                $.getJSON(self.source, function(data) {
+                $.getJSON(source, function(data) {
                     self.dataRaw = data;
                     self.dataRaw.main = dataAlt;
                     self.intervalId = window.setInterval(self._check, 5000);
@@ -155,6 +154,7 @@ $(document).ready(function() {
         }
     };
 
+$(document).ready(function() {
     /*
     $(window).resize(function() {
         application.initialize();
@@ -179,5 +179,5 @@ $(document).ready(function() {
 
     $('#source').val('http://sourcefabric.superdesk.pro/resources/LiveDesk/Blog/18/Post/Published/.json?X-Filter=*&limit=1000');
     application.source = $('#source').val();
-    application.update();
+    application.update('aamulehti.json');
 });
